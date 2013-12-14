@@ -15,17 +15,16 @@ App.Router.map(function () {
 
 App.PoniesView = Ember.View.extend({
   templateName: 'ponies',
-  delay: 100,
+  delay: 200,
 
   willInsertElement: function () {
     Ember.run.later(this, 'rotate', this.get('delay'));
   },
 
   rotate: function () {
-    var imgs = this.$('img'),
-    	self = this;
+    var imgs = this.$('img');
     imgs.last().after(imgs.get(0));
-    Ember.run.later(self, 'rotate', 100);
+    Ember.run.later(this, 'rotate', this.get('delay'));
   }
 });
 
